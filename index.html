@@ -26,10 +26,10 @@
         
         <!-- NAVEGACIÓN POR PESTAÑAS (TABS) -->
         <div class="flex border-b border-gray-300 bg-white rounded-t-lg overflow-hidden shadow-sm mb-0" data-html2canvas-ignore="true">
-            <button id="tab-btn-taller" onclick="cambiarPestana('taller')" class="flex-1 py-3 px-4 text-center font-bold text-sm text-indigo-900 border-b-2 border-indigo-700 bg-indigo-50/50 hover:bg-indigo-50 transition">
+            <button id="tab-btn-taller" class="flex-1 py-3 px-4 text-center font-bold text-sm text-indigo-900 border-b-2 border-indigo-700 bg-indigo-50/50 hover:bg-indigo-50 transition cursor-pointer">
                 📝 Taller Práctico (Entregable)
             </button>
-            <button id="tab-btn-teoria" onclick="cambiarPestana('teoria')" class="flex-1 py-3 px-4 text-center font-bold text-sm text-gray-500 border-b-2 border-transparent hover:text-indigo-800 hover:bg-gray-50 transition">
+            <button id="tab-btn-teoria" class="flex-1 py-3 px-4 text-center font-bold text-sm text-gray-500 border-b-2 border-transparent hover:text-indigo-800 hover:bg-gray-50 transition cursor-pointer">
                 📘 Margen de Ganancia (Teoría)
             </button>
         </div>
@@ -59,7 +59,7 @@
                 <!-- SECCIÓN 1: COSTOS FIJOS TOTALES (CFT) -->
                 <div class="mb-5">
                     <h2 class="text-sm font-bold text-indigo-800 mb-1.5 border-b pb-1">1. Registro de Costos Fijos Totales (CFT)</h2>
-                    <p class="text-xs text-gray-500 mb-2">Egresos constantes mensuales (Arriendo, nómina fija, servicios)[cite: 1].</p>
+                    <p class="text-xs text-gray-500 mb-2">Egresos constantes mensuales (Arriendo, nómina fija, servicios).</p>
                     
                     <table class="w-full text-left text-xs border-collapse border border-gray-200" id="tabla-fijos">
                         <thead>
@@ -71,22 +71,22 @@
                         <tbody>
                             <tr>
                                 <td class="p-1.5 border"><input type="text" placeholder="Ej: Arriendo local" class="w-full p-1 border rounded"></td>
-                                <td class="p-1.5 border"><input type="number" value="0" class="w-full p-1 border rounded cft-input" onchange="calcular()"></td>
+                                <td class="p-1.5 border"><input type="number" value="0" class="w-full p-1 border rounded cft-input"></td>
                             </tr>
                             <tr>
                                 <td class="p-1.5 border"><input type="text" placeholder="Ej: Servicios Públicos" class="w-full p-1 border rounded"></td>
-                                <td class="p-1.5 border"><input type="number" value="0" class="w-full p-1 border rounded cft-input" onchange="calcular()"></td>
+                                <td class="p-1.5 border"><input type="number" value="0" class="w-full p-1 border rounded cft-input"></td>
                             </tr>
                         </tbody>
                     </table>
-                    <button onclick="agregarFila('tabla-fijos', 'cft-input')" class="mt-1.5 text-xs bg-indigo-50 text-indigo-700 font-semibold px-2.5 py-1 rounded hover:bg-indigo-100" data-html2canvas-ignore="true">+ Agregar Costo Fijo</button>
+                    <button id="btn-add-cft" class="mt-1.5 text-xs bg-indigo-50 text-indigo-700 font-semibold px-2.5 py-1 rounded hover:bg-indigo-100 cursor-pointer" data-html2canvas-ignore="true">+ Agregar Costo Fijo</button>
                     <div class="text-right mt-1.5 text-xs font-bold text-gray-800">Total Costos Fijos (CFT): $<span id="total-cft">0</span></div>
                 </div>
 
                 <!-- SECCIÓN 2: COSTOS VARIABLES UNITARIOS (CVU) -->
                 <div class="mb-5">
                     <h2 class="text-sm font-bold text-indigo-800 mb-1.5 border-b pb-1">2. Registro de Costos Variables Unitarios (CVU)</h2>
-                    <p class="text-xs text-gray-500 mb-2">Insumos y costos asociados directamente a producir UNA sola unidad[cite: 1].</p>
+                    <p class="text-xs text-gray-500 mb-2">Insumos y costos asociados directamente a producir UNA sola unidad.</p>
                     
                     <table class="w-full text-left text-xs border-collapse border border-gray-200" id="tabla-variables">
                         <thead>
@@ -98,15 +98,15 @@
                         <tbody>
                             <tr>
                                 <td class="p-1.5 border"><input type="text" placeholder="Ej: Materia Prima principal" class="w-full p-1 border rounded"></td>
-                                <td class="p-1.5 border"><input type="number" value="0" class="w-full p-1 border rounded cvu-input" onchange="calcular()"></td>
+                                <td class="p-1.5 border"><input type="number" value="0" class="w-full p-1 border rounded cvu-input"></td>
                             </tr>
                             <tr>
                                 <td class="p-1.5 border"><input type="text" placeholder="Ej: Empaque" class="w-full p-1 border rounded"></td>
-                                <td class="p-1.5 border"><input type="number" value="0" class="w-full p-1 border rounded cvu-input" onchange="calcular()"></td>
+                                <td class="p-1.5 border"><input type="number" value="0" class="w-full p-1 border rounded cvu-input"></td>
                             </tr>
                         </tbody>
                     </table>
-                    <button onclick="agregarFila('tabla-variables', 'cvu-input')" class="mt-1.5 text-xs bg-indigo-50 text-indigo-700 font-semibold px-2.5 py-1 rounded hover:bg-indigo-100" data-html2canvas-ignore="true">+ Agregar Costo Variable</button>
+                    <button id="btn-add-cvu" class="mt-1.5 text-xs bg-indigo-50 text-indigo-700 font-semibold px-2.5 py-1 rounded hover:bg-indigo-100 cursor-pointer" data-html2canvas-ignore="true">+ Agregar Costo Variable</button>
                     <div class="text-right mt-1.5 text-xs font-bold text-gray-800">Total Costo Variable Unitario (CVU): $<span id="total-cvu">0</span></div>
                 </div>
 
@@ -117,11 +117,11 @@
                     <div class="grid grid-cols-2 gap-3 bg-gray-50 p-3 rounded-md border border-gray-200 text-xs mb-2">
                         <div>
                             <label class="block font-semibold text-gray-700">Ventas Proyectadas (Q unidades):</label>
-                            <input type="number" id="ventas-q" value="100" class="w-full mt-1 p-1.5 border rounded bg-white" onchange="calcular()">
+                            <input type="number" id="ventas-q" value="100" class="w-full mt-1 p-1.5 border rounded bg-white">
                         </div>
                         <div>
                             <label class="block font-semibold text-gray-700">% Margen Deseado sobre el Precio (%M):</label>
-                            <input type="number" id="porcentaje-margen" value="30" max="99.9" class="w-full mt-1 p-1.5 border rounded bg-white" onchange="calcular()">
+                            <input type="number" id="porcentaje-margen" value="30" max="99.9" class="w-full mt-1 p-1.5 border rounded bg-white">
                         </div>
                     </div>
 
@@ -136,19 +136,19 @@
                     <h2 class="text-xs font-bold uppercase tracking-wider text-indigo-200 border-b border-indigo-700 pb-1.5 mb-3">Resultados Financieros Automáticos</h2>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
                         <div class="bg-indigo-800/80 p-2.5 rounded">
-                            <span class="block text-[10px] text-indigo-300 uppercase">Costo Total Unit. (CTU)[cite: 1]</span>
+                            <span class="block text-[10px] text-indigo-300 uppercase">Costo Total Unit. (CTU)</span>
                             <span class="text-base font-bold" id="res-ctu">$0</span>
                         </div>
                         <div class="bg-indigo-800/80 p-2.5 rounded">
-                            <span class="block text-[10px] text-indigo-300 uppercase">Precio de Venta (PVS)[cite: 1]</span>
+                            <span class="block text-[10px] text-indigo-300 uppercase">Precio de Venta (PVS)</span>
                             <span class="text-base font-bold text-green-400" id="res-pvs">$0</span>
                         </div>
                         <div class="bg-indigo-800/80 p-2.5 rounded">
-                            <span class="block text-[10px] text-indigo-300 uppercase">Margen Contrib. (MCU)[cite: 1]</span>
+                            <span class="block text-[10px] text-indigo-300 uppercase">Margen Contrib. (MCU)</span>
                             <span class="text-base font-bold" id="res-mcu">$0</span>
                         </div>
                         <div class="bg-indigo-800/80 p-2.5 rounded">
-                            <span class="block text-[10px] text-indigo-300 uppercase">Punto Equilibrio (PEq)[cite: 1]</span>
+                            <span class="block text-[10px] text-indigo-300 uppercase">Punto Equilibrio (PEq)</span>
                             <span class="text-base font-bold text-yellow-400" id="res-peq">0 unds</span>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
 
                 <!-- BOTÓN DE DESCARGA -->
                 <div class="text-center pt-2" data-html2canvas-ignore="true">
-                    <button onclick="generarPDF()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-6 rounded-lg shadow-md transition">
+                    <button id="btn-export-pdf" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-6 rounded-lg shadow-md transition cursor-pointer">
                         📄 Exportar Entregable a PDF
                     </button>
                 </div>
@@ -169,14 +169,14 @@
             
             <div class="border-b-2 border-indigo-700 pb-3 mb-4">
                 <h2 class="text-xl font-bold text-indigo-900 uppercase">📘 Teoría del Margen de Ganancia (Margin vs. Markup)</h2>
-                <p class="text-gray-500">Comprendiendo el impacto del porcentaje de ganancia en el Precio de Venta ($PVS$)[cite: 1]</p>
+                <p class="text-gray-500">Comprendiendo el impacto del porcentaje de ganancia en el Precio de Venta ($PVS$)</p>
             </div>
 
             <!-- COMPORTAMIENTO MATEMÁTICO DE UN PRODUCTO DE $25.000 -->
             <div class="mb-6 bg-indigo-50/60 p-4 rounded-lg border border-indigo-200">
                 <h3 class="text-sm font-bold text-indigo-900 mb-2">📈 ¿Por qué el precio se dispara exponencialmente después del 90%?</h3>
                 <p class="text-gray-700 mb-3">
-                    La fórmula del <strong>Margen sobre el Precio (Margin)</strong> mide qué porcentaje del total cobrado al cliente corresponde a tu ganancia neta[cite: 1]:
+                    La fórmula del <strong>Margen sobre el Precio (Margin)</strong> mide qué porcentaje del total cobrado al cliente corresponde a tu ganancia neta:
                 </p>
                 
                 <div class="bg-white p-3 rounded border border-indigo-200 text-center font-mono font-bold text-indigo-900 mb-3">
@@ -274,50 +274,68 @@
 
     </div>
 
-    <!-- SCRIPT DE PESTAÑAS, CÁLCULOS Y EXPORTACIÓN -->
+    <!-- SCRIPT CORREGIDO DE NAVEGACIÓN Y CÁLCULOS -->
     <script>
-        function cambiarPestana(pestana) {
-            const tallerCont = document.getElementById('pestana-taller');
-            const teoriaCont = document.getElementById('pestana-teoria');
+        document.addEventListener('DOMContentLoaded', function() {
             const btnTaller = document.getElementById('tab-btn-taller');
             const btnTeoria = document.getElementById('tab-btn-teoria');
+            const pestanaTaller = document.getElementById('pestana-taller');
+            const pestanaTeoria = document.getElementById('pestana-teoria');
 
-            if (pestana === 'taller') {
-                tallerCont.classList.remove('hidden');
-                teoriaCont.classList.add('hidden');
+            // Cambio de pestañas con EventListeners directos
+            btnTaller.addEventListener('click', function() {
+                pestanaTaller.classList.remove('hidden');
+                pestanaTeoria.classList.add('hidden');
                 
-                btnTaller.className = "flex-1 py-3 px-4 text-center font-bold text-sm text-indigo-900 border-b-2 border-indigo-700 bg-indigo-50/50 hover:bg-indigo-50 transition";
-                btnTeoria.className = "flex-1 py-3 px-4 text-center font-bold text-sm text-gray-500 border-b-2 border-transparent hover:text-indigo-800 hover:bg-gray-50 transition";
-            } else {
-                tallerCont.classList.add('hidden');
-                teoriaCont.classList.remove('hidden');
+                btnTaller.className = "flex-1 py-3 px-4 text-center font-bold text-sm text-indigo-900 border-b-2 border-indigo-700 bg-indigo-50/50 hover:bg-indigo-50 transition cursor-pointer";
+                btnTeoria.className = "flex-1 py-3 px-4 text-center font-bold text-sm text-gray-500 border-b-2 border-transparent hover:text-indigo-800 hover:bg-gray-50 transition cursor-pointer";
+            });
 
-                btnTeoria.className = "flex-1 py-3 px-4 text-center font-bold text-sm text-indigo-900 border-b-2 border-indigo-700 bg-indigo-50/50 hover:bg-indigo-50 transition";
-                btnTaller.className = "flex-1 py-3 px-4 text-center font-bold text-sm text-gray-500 border-b-2 border-transparent hover:text-indigo-800 hover:bg-gray-50 transition";
-            }
-        }
+            btnTeoria.addEventListener('click', function() {
+                pestanaTaller.classList.add('hidden');
+                pestanaTeoria.classList.remove('hidden');
+
+                btnTeoria.className = "flex-1 py-3 px-4 text-center font-bold text-sm text-indigo-900 border-b-2 border-indigo-700 bg-indigo-50/50 hover:bg-indigo-50 transition cursor-pointer";
+                btnTaller.className = "flex-1 py-3 px-4 text-center font-bold text-sm text-gray-500 border-b-2 border-transparent hover:text-indigo-800 hover:bg-gray-50 transition cursor-pointer";
+            });
+
+            // Asignar listeners a los botones de agregar fila
+            document.getElementById('btn-add-cft').addEventListener('click', function() {
+                agregarFila('tabla-fijos', 'cft-input');
+            });
+
+            document.getElementById('btn-add-cvu').addEventListener('click', function() {
+                agregarFila('tabla-variables', 'cvu-input');
+            });
+
+            // Escuchar cambios en los inputs principales
+            document.getElementById('documento-entrega').addEventListener('input', calcular);
+
+            // Listener para el botón de exportación PDF
+            document.getElementById('btn-export-pdf').addEventListener('click', generarPDF);
+
+            // Cálculo inicial
+            calcular();
+        });
 
         function agregarFila(tablaId, inputClass) {
             const tbody = document.getElementById(tablaId).getElementsByTagName('tbody')[0];
             const nuevaFila = tbody.insertRow();
             nuevaFila.innerHTML = `
                 <td class="p-1.5 border"><input type="text" placeholder="Concepto..." class="w-full p-1 border rounded"></td>
-                <td class="p-1.5 border"><input type="number" value="0" class="w-full p-1 border rounded ${inputClass}" onchange="calcular()"></td>
+                <td class="p-1.5 border"><input type="number" value="0" class="w-full p-1 border rounded ${inputClass}"></td>
             `;
         }
 
         function calcular() {
-            // 1. Costos Fijos
             let cft = 0;
             document.querySelectorAll('.cft-input').forEach(i => cft += parseFloat(i.value) || 0);
             document.getElementById('total-cft').innerText = cft.toLocaleString();
 
-            // 2. Costos Variables
             let cvu = 0;
             document.querySelectorAll('.cvu-input').forEach(i => cvu += parseFloat(i.value) || 0);
             document.getElementById('total-cvu').innerText = cvu.toLocaleString();
 
-            // 3. Proyecciones
             const q = parseFloat(document.getElementById('ventas-q').value) || 1;
             const pct = parseFloat(document.getElementById('porcentaje-margen').value) || 0;
             const alertaBox = document.getElementById('alerta-margen');
@@ -327,7 +345,6 @@
             let mcu = 0;
             let peq = 0;
 
-            // Validar que %M sea estrictamente menor a 100%
             if (pct >= 100 || pct < 0) {
                 alertaBox.classList.remove('hidden');
                 document.getElementById('res-ctu').innerText = '$' + Math.round(ctu).toLocaleString();
@@ -337,12 +354,11 @@
                 return;
             } else {
                 alertaBox.classList.add('hidden');
-                pvs = ctu / (1 - (pct / 100)); // Método Margen sobre el Precio[cite: 1]
+                pvs = ctu / (1 - (pct / 100));
                 mcu = pvs - cvu;
                 peq = mcu > 0 ? cft / mcu : 0;
             }
 
-            // Renderizar resultados válidos
             document.getElementById('res-ctu').innerText = '$' + Math.round(ctu).toLocaleString();
             document.getElementById('res-pvs').innerText = '$' + (isFinite(pvs) && pvs > 0 ? Math.round(pvs).toLocaleString() : 0);
             document.getElementById('res-mcu').innerText = '$' + (isFinite(mcu) && mcu > 0 ? Math.round(mcu).toLocaleString() : 0);
@@ -350,7 +366,6 @@
         }
 
         function generarPDF() {
-            // Sincronizar inputs para que HTML2PDF los lea
             document.querySelectorAll('input').forEach(input => {
                 input.setAttribute('value', input.value);
             });
@@ -375,9 +390,6 @@
 
             html2pdf().set(opciones).from(elemento).save();
         }
-
-        // Inicializar
-        calcular();
     </script>
 </body>
 </html>
